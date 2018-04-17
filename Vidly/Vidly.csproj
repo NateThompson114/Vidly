@@ -292,6 +292,14 @@
     <Compile Include="Migrations\201804171355301_AddingMovies.Designer.cs">
       <DependentUpon>201804171355301_AddingMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804172038073_RepairGenre.cs" />
+    <Compile Include="Migrations\201804172038073_RepairGenre.Designer.cs">
+      <DependentUpon>201804172038073_RepairGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804172041004_FixMovieName.cs" />
+    <Compile Include="Migrations\201804172041004_FixMovieName.Designer.cs">
+      <DependentUpon>201804172041004_FixMovieName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -305,6 +313,8 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModel\MovieFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -413,6 +423,8 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Customers\Customer.cshtml" />
     <Content Include="Views\Movies\Movie.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -470,6 +482,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804171355301_AddingMovies.resx">
       <DependentUpon>201804171355301_AddingMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804172038073_RepairGenre.resx">
+      <DependentUpon>201804172038073_RepairGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804172041004_FixMovieName.resx">
+      <DependentUpon>201804172041004_FixMovieName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

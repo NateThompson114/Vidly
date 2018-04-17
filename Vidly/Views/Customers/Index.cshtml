@@ -17,6 +17,7 @@
                 <th>Membership Level</th>
                 <th>Discount Rate</th>
                 <th>ID</th>
+                <th>Edit</th>
             </tr>
             @foreach (var customer in Model)
             {
@@ -26,6 +27,7 @@
                 <td>@customer.MembershipType.Name</td>
                 <td>@customer.MembershipType.DiscountRate%</td>
                 <td>@customer.Id</td>
+                <td><input type="button" value="Edit" class="btn btn-danger" onclick="location.href='@Url.Action("Edit", "Customers", new {id = customer.Id})'"/></td>
             </tr>
             }
         </table>
