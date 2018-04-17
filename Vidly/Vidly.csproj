@@ -268,13 +268,25 @@
     <Compile Include="Migrations\201804161952298_Correcting90Days.Designer.cs">
       <DependentUpon>201804161952298_Correcting90Days.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804171223067_AddingOptionalBirthdateToCustomers.cs" />
+    <Compile Include="Migrations\201804171223067_AddingOptionalBirthdateToCustomers.Designer.cs">
+      <DependentUpon>201804171223067_AddingOptionalBirthdateToCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804171229186_FixCustomerBirthdate.cs" />
+    <Compile Include="Migrations\201804171229186_FixCustomerBirthdate.Designer.cs">
+      <DependentUpon>201804171229186_FixCustomerBirthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804171238044_FixCustomerBirthdateTry2.cs" />
+    <Compile Include="Migrations\201804171238044_FixCustomerBirthdateTry2.Designer.cs">
+      <DependentUpon>201804171238044_FixCustomerBirthdateTry2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
-    <Compile Include="Models\Movies.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -426,6 +438,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804161952298_Correcting90Days.resx">
       <DependentUpon>201804161952298_Correcting90Days.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804171223067_AddingOptionalBirthdateToCustomers.resx">
+      <DependentUpon>201804171223067_AddingOptionalBirthdateToCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804171229186_FixCustomerBirthdate.resx">
+      <DependentUpon>201804171229186_FixCustomerBirthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804171238044_FixCustomerBirthdateTry2.resx">
+      <DependentUpon>201804171238044_FixCustomerBirthdateTry2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

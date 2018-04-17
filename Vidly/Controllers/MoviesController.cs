@@ -13,12 +13,12 @@ namespace Vidly.Controllers
             return View(movies);
         }
 
-        private IEnumerable<Movies> GetMovies()
+        private IEnumerable<Movie> GetMovies()
         {
-            return new List<Movies>
+            return new List<Movie>
             {
-                new Movies{Id = 1,Name = "Gone With The Wind."},
-                new Movies{Id = 2, Name = "Star Wars"}
+                new Movie{Id = 1,Name = "Gone With The Wind."},
+                new Movie{Id = 2, Name = "Star Wars"}
             };
         }
     }

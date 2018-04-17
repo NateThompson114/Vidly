@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var birthdate = Model.Birthdate.HasValue ? $"{Model.Birthdate:M-d-yyyy}" : "N/A";
 }
 
 <h2>@Model.Name</h2>
@@ -14,10 +15,12 @@
         <th>Subscription</th>
         <th>Membership Level</th>
         <th>Discount Rate</th>
+        <th>Birthdate</th>
     </tr>
     <tr>
         <td>@Model.IsSubscribedToNewsletter</td>
         <td>@Model.MembershipType.Name</td>
         <td>@Model.MembershipType.DiscountRate%</td>
+        <td>@birthdate</td>
     </tr>
 </table>
