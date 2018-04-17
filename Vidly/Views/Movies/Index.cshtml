@@ -1,5 +1,5 @@
 ﻿@using System.Activities.Statements
-@model IEnumerable<Vidly.Models.Movies>
+@model IEnumerable<Vidly.Models.Movie>
 
 @{
     ViewBag.Title = "Movies";
@@ -14,13 +14,13 @@
         <table class="table table-bordered">
             <tr>
                 <th>Movie</th>
-                <th>ID</th>
+                <th>Genre</th>
             </tr>
-            @foreach (var movies in Model)
+            @foreach (var movie in Model)
             {
                 <tr>
-                    <td>@movies.Name</td>
-                    <td>@movies.Id</td>
+                    <td>@Html.ActionLink(movie.Name, "Movie", new {id = movie.Id})</td>
+                    <td>@movie.Genre.Name</td>
                 </tr>
             }
         </table>
