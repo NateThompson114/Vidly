@@ -6,6 +6,7 @@
 }
 
 <h2>Customers</h2>
+<input value="New Customer" type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("New","Customers")'" /> <br />
 
 @{
     if (Model.Any())
@@ -21,14 +22,14 @@
             </tr>
             @foreach (var customer in Model)
             {
-            <tr>
-                <td>@Html.ActionLink(customer.Name, "Customer", new { id = customer.Id })</td>
-                <td>@customer.IsSubscribedToNewsletter</td>
-                <td>@customer.MembershipType.Name</td>
-                <td>@customer.MembershipType.DiscountRate%</td>
-                <td>@customer.Id</td>
-                <td><input type="button" value="Edit" class="btn btn-danger" onclick="location.href='@Url.Action("Edit", "Customers", new {id = customer.Id})'"/></td>
-            </tr>
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "Customer", new { id = customer.Id })</td>
+                    <td>@customer.IsSubscribedToNewsletter</td>
+                    <td>@customer.MembershipType.Name</td>
+                    <td>@customer.MembershipType.DiscountRate%</td>
+                    <td>@customer.Id</td>
+                    <td><input type="button" value="Edit" class="btn btn-danger" onclick="location.href='@Url.Action("Edit", "Customers", new {id = customer.Id})'" /></td>
+                </tr>
             }
         </table>
     }

@@ -300,6 +300,10 @@
     <Compile Include="Migrations\201804172041004_FixMovieName.Designer.cs">
       <DependentUpon>201804172041004_FixMovieName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804181436166_UpdatedCustomerClassValidation.cs" />
+    <Compile Include="Migrations\201804181436166_UpdatedCustomerClassValidation.Designer.cs">
+      <DependentUpon>201804181436166_UpdatedCustomerClassValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -307,6 +311,7 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -488,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804172041004_FixMovieName.resx">
       <DependentUpon>201804172041004_FixMovieName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804181436166_UpdatedCustomerClassValidation.resx">
+      <DependentUpon>201804181436166_UpdatedCustomerClassValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
