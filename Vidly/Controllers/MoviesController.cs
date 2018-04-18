@@ -51,18 +51,42 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
-            var addMovie = new Movie
+            if (movie.Id == 0)
             {
-                DateAdded = DateTime.Now,
-                DateReleased = movie.DateReleased,
-                GenreId = movie.GenreId,
-                Name = movie.Name,
-                Quantity = movie.Quantity
-            };
-            _context.Movies.Add(addMovie);
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                var movieInDB = _context.Movies.Single(m => m.Id == movie.Id);
+
+                movieInDB.Name = movie.Name;
+                movieInDB.DateReleased = movie.DateReleased;
+                movieInDB.GenreId = movie.GenreId;
+                movieInDB.Quantity = movie.Quantity;
+            }
+            
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Movies");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("MovieForm", viewModel);
         }
     }
 }

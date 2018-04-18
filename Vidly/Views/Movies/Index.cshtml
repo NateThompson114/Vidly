@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
 <h2>Movies</h2>
@@ -16,12 +17,19 @@
             <tr>
                 <th>Movie</th>
                 <th>Genre</th>
+                <th>Release Date</th>
+                <th>Number in Stock</th>
+                <th>Edit</th>
             </tr>
             @foreach (var movie in Model)
             {
+                var releaseDate = movie.DateReleased.ToString("MMMM d, yyyy");
                 <tr>
                     <td>@Html.ActionLink(movie.Name, "Movie", new {id = movie.Id})</td>
                     <td>@movie.Genre.Name</td>
+                    <td>@releaseDate</td>
+                    <td>@movie.Quantity</td>
+                    <td><input type="button" value="Edit" class="btn btn-danger" onclick="location.href='@Url.Action("Edit", "Movies", new {id = movie.Id})'"/></td>
                 </tr>
             }
         </table>
