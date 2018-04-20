@@ -15,7 +15,8 @@ namespace Vidly.App_Start
             Mapper.Initialize(config =>
             {
                 config.CreateMap<Customer, CustomerDto>();
-                config.CreateMap<CustomerDto, Customer>();
+                config.CreateMap<CustomerDto, Customer>()
+                    .ForMember(m => m.Id, opt => opt.Ignore());
             });
         }
     }
