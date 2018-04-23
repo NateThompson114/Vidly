@@ -35,14 +35,13 @@
 {
     <script>
         $(document).ready(function () {
-            $("#customers").DataTable({
+             var table = $("#customers").DataTable({
                 ajax: {
                     url: "/api/customers",
                     dataSrc: ""
                 },
                 columns: [
                     {
-                        data: "name",
                         render: function(data, type, customer) {
                             return "<a href='/customers/id/" + customer.id + "'>" + customer.name + "</a>";
                         }
@@ -51,13 +50,12 @@
                         data: "isSubscribedToNewsletter"
                     },
                     {
-                        render: function (data, type, customer) {
-                            return customer.membershipType.name;
-                        }
+                        data: "membershipType.name"
                     },
                     {
-                        render: function (data,type,customer) {
-                            return customer.membershipType.discountRate + "%";
+                        data: "membershipType.discountRate",
+                        render: function (data) {
+                            return data + "%";
                         }
                     },
                     {
@@ -81,7 +79,9 @@
                         $.ajax({
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",
-                            success: button.parents("tr").remove()
+                            success: function() {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
                         });
                     }
                 });
