@@ -32,12 +32,16 @@ namespace Vidly.Controllers.API
         // GET /api/customers/1
         public IHttpActionResult GetCustomer(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customerDto = _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>)
+                .SingleOrDefault(c => c.Id == id);
 
-            if (customer == null)
+            if (customerDto == null)
                 return NotFound();
 
-            return Ok(Mapper.Map<Customer,CustomerDto>(customer));
+            return Ok(customerDto);
         }
 
         // POST /api/customers
