@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using Vidly.Models;
 
@@ -11,19 +12,17 @@ namespace Vidly.Dtos
     {
         public int Id { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
-        [Required]
         public DateTime DateReleased { get; set; }
 
-        [Required]
         public DateTime DateAdded { get; set; }
 
-        [Required]
         public int Quantity { get; set; }
         
-        [Required]
+        [IgnoreDataMember]
         public int GenreId { get; set; }
+
+        public Genre Genre { get; set; }
     }
 }

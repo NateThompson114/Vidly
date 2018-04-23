@@ -23,6 +23,8 @@ namespace Vidly.App_Start
                     .ForMember(m => m.Id, opt => opt.Ignore());
 
                 config.CreateMap<MembershipType, MembershipTypeDto>();
+
+                config.CreateMap<Genre, GenreDto>();
             });
         }
     }
