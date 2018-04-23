@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModel;
 using System.Data.Entity;
+using Vidly.Dtos;
 
 namespace Vidly.Controllers
 {
@@ -25,9 +26,7 @@ namespace Vidly.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-
-            return View(customers);
+            return View();
         }
 
         // ..Customers/id/01
@@ -81,6 +80,23 @@ namespace Vidly.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            if (id == 0)
+                return HttpNotFound();
+
+            _context.Customers.Remove(customer);
+            _context.SaveChanges();
+
+            return View("Index");
         }
 
         public ActionResult Edit(int id)

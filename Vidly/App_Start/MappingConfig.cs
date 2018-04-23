@@ -21,6 +21,8 @@ namespace Vidly.App_Start
                 config.CreateMap<Movie, MovieDto>();
                 config.CreateMap<MovieDto, Movie>()
                     .ForMember(m => m.Id, opt => opt.Ignore());
+
+                config.CreateMap<MembershipType, MembershipTypeDto>();
             });
         }
     }

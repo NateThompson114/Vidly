@@ -9,14 +9,14 @@
 </head>
 <body>
     @Html.Partial("_NavBar")
+    <br />
     <div class="container body-content">
         @RenderBody()
         <hr />
         @Html.Partial("_Footer")
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
 </body>
 </html>

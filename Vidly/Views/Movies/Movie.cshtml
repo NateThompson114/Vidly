@@ -8,17 +8,22 @@
 
 <h2>@Model.Name</h2>
 
+
+@{
+    var tableHeaders = new List<string> { "Genre", "Release Date", "Date Added", "Current Stock"};
+}
 <table class="table table-bordered">
-    <tr>
-        <th>Genre</th>
-        <th>Release Date</th>
-        <th>Date Added</th>
-        <th>Current Stock</th>
-    </tr>
-    <tr>
-        <td>@Model.Genre.Name</td>
-        <td>@dateReleased</td>
-        <td>@dateAdded</td>
-        <td>@Model.Quantity</td>
-    </tr>
+    <thead>
+        <tr>
+            @foreach (var header in tableHeaders) {<th scope="col">@header</th>}
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-light">
+            <td>@Model.Genre.Name</td>
+            <td>@dateReleased</td>
+            <td>@dateAdded</td>
+            <td>@Model.Quantity</td>
+        </tr>
+    </tbody>
 </table>
