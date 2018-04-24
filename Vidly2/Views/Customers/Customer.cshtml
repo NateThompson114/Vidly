@@ -1,0 +1,44 @@
+﻿@using System.Activities.Statements
+@using Vidly2.Models
+@model Customer
+
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var birthdate = Model.Birthdate.HasValue ? $"{Model.Birthdate:M-d-yyyy}" : "N/A";
+}
+
+<table style="width: 100%">
+    <tr>
+        <td>
+            <h2>@Model.Name</h2>
+        </td>
+        @*<td style="text-align: right">
+            <input type="button" value="Delete" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Customers", new {id = Model.Id})'" />
+        </td>*@
+    </tr>
+</table>
+
+
+@{
+    var tableHeaders = new List<string> { "Subscription", "Membership Level", "Discount Rate", "Birthdate", "Edit"};
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @foreach (var header in tableHeaders) {<th scope="col">@header</th>}
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-light">
+            <td>@Model.IsSubscribedToNewsletter</td>
+            <td>@Model.MembershipType.Name</td>
+            <td>@Model.MembershipType.DiscountRate%</td>
+            <td>@birthdate</td>
+            <td>
+                <input type="button" value="Edit" class="btn btn-warning" onclick="location.href='@Url.Action("Edit", "Customers", new {id = Model.Id})'" />
+            </td>
+        </tr>
+    </tbody>
+</table>

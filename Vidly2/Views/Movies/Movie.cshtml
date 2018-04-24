@@ -1,0 +1,29 @@
+﻿@model Vidly2.Models.Movie
+@{
+    ViewBag.Title = "Movie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var dateReleased = $"{Model.DateReleased:dddd, MMMM d, yyyy}";
+    var dateAdded = $"{Model.DateAdded:dddd, MMMM d, yyyy}";
+}
+
+<h2>@Model.Name</h2>
+
+
+@{
+    var tableHeaders = new List<string> { "Genre", "Release Date", "Date Added", "Current Stock"};
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @foreach (var header in tableHeaders) {<th scope="col">@header</th>}
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-light">
+            <td>@Model.Genre.Name</td>
+            <td>@dateReleased</td>
+            <td>@dateAdded</td>
+            <td>@Model.Quantity</td>
+        </tr>
+    </tbody>
+</table>

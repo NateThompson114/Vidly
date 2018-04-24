@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table style="width: 100%">
+    <tr>
+        <td>
+            <h2>Customers</h2>
+        </td>
+        <td style="text-align: right">
+            <input value="New Customer" type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("New","Customers")'" />
+        </td>
+    </tr>
+</table>
+
+<br /><br />
+
+@{
+
+    var tableHeaders = new List<string>{"Customer", "Subscription", "Membership Level", "Discount Rate", "Edit", "Delete"};
+    
+    <table id="customers" class="table table-hover">
+        <thead>
+        <tr>
+            @foreach(var header in tableHeaders) {<th scope="col">@header</th>}
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+             var table = $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        render: function(data, type, customer) {
+                            return "<a href='/customers/id/" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "isSubscribedToNewsletter"
+                    },
+                    {
+                        data: "membershipType.name"
+                    },
+                    {
+                        data: "membershipType.discountRate",
+                        render: function (data) {
+                            return data + "%";
+                        }
+                    },
+                    {
+                        render: function (data, type, customer) {
+                            return "<a class='btn btn-warning' href='/customers/edit/" + customer.id + "'>Edit</a>";
+                        }
+                    },
+                    {
+                        render: function (data, type, customer) {                           
+                            return "<button class='btn btn-danger js-delete' data-movie-id=" + customer.id + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#customers").on("click", ".js-delete", function () {
+                var button = $(this);
+                
+                bootbox.confirm("Are you sure you want to delete this customer?", function(result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function() {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
