@@ -20,7 +20,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44323</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -226,18 +226,39 @@
     <Compile Include="Migrations\201804241847174_addingData.Designer.cs">
       <DependentUpon>201804241847174_addingData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804261507051_seedUsers.cs" />
+    <Compile Include="Migrations\201804261507051_seedUsers.Designer.cs">
+      <DependentUpon>201804261507051_seedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804261857352_AddDrivingLicenseToApplicationUser.cs" />
+    <Compile Include="Migrations\201804261857352_AddDrivingLicenseToApplicationUser.Designer.cs">
+      <DependentUpon>201804261857352_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804262011200_AddPhoneToApplicationUser.cs" />
+    <Compile Include="Migrations\201804262011200_AddPhoneToApplicationUser.Designer.cs">
+      <DependentUpon>201804262011200_AddPhoneToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="ViewModel\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\Account\ExternalLoginListViewModel.cs" />
+    <Compile Include="ViewModel\Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModel\Account\ForgotViewModel.cs" />
+    <Compile Include="ViewModel\Account\LoginViewModel.cs" />
+    <Compile Include="ViewModel\Account\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\Account\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModel\Account\SendCodeViewModel.cs" />
+    <Compile Include="ViewModel\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModel\CustomerFormViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\MovieFormViewModel.cs" />
@@ -583,11 +604,12 @@
     <Content Include="Views\Customers\Customer.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\ManagerList.cshtml" />
     <Content Include="Views\Movies\Movie.cshtml" />
     <Content Include="Views\Movies\MovieForm.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Movies\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -610,6 +632,15 @@
     <EmbeddedResource Include="Migrations\201804241847174_addingData.resx">
       <DependentUpon>201804241847174_addingData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261507051_seedUsers.resx">
+      <DependentUpon>201804261507051_seedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261857352_AddDrivingLicenseToApplicationUser.resx">
+      <DependentUpon>201804261857352_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804262011200_AddPhoneToApplicationUser.resx">
+      <DependentUpon>201804262011200_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -630,7 +661,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56511</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59943/</IISUrl>
+          <IISUrl>https://localhost:44323/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
