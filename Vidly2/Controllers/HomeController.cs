@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace Vidly2.Controllers
 {
-    [AllowAnonymous]
+    [AllowAnonymous, OutputCache(Duration = 50, Location = OutputCacheLocation.Client)]
     public class HomeController : Controller
     {
         public ActionResult Index()
