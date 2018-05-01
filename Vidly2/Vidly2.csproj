@@ -266,6 +266,7 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Rental.cs" />
+    <Compile Include="Tools\SHA.cs" />
     <Compile Include="ViewModel\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
