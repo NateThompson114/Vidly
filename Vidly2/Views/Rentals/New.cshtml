@@ -11,7 +11,7 @@
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customers" type="text" value="" class="form-control" />
+            <input id="customers" required type="text" value="" class="form-control" />
         </div>
     </div>
     <!--Movie(s) Info-->
@@ -30,6 +30,8 @@
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
+
     <script>
         $(document).ready(function() {
 
@@ -56,7 +58,7 @@
                 display: 'name',
                 source: customers
             }).on("typeahead:select", function(e, customer) {
-                vm.customerId = customer.id;
+            vm.customerId = customer.id;
             });
 
             var movies = new Bloodhound({
@@ -72,11 +74,11 @@
                     minLength: 3,
                     highlight: true
 
-            },
-            {
-                name: 'movies',
-                display: 'name',
-                source: movies
+                },
+                {
+                    name: 'movies',
+                    display: 'name',
+                    source: movies
                 }).on("typeahead:select", function(e, movie) {
                     $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
                     $("#movie").typeahead("val", "");
@@ -84,24 +86,30 @@
                 }
             );
 
-            $("#newRental").submit(function(e) {
-                e.preventDefault();
+            $("#newRental").validate({
+                submitHandler: function() {
+                    $("#newRental").submit(function(e) {
+                        e.preventDefault();
 
-                $.ajax({
-                    url: "/api/rentals",
-                    method: "POST",
-                    data: vm
-                })
-                    .done(function() {
-                        toastr.success("Rentals successfully recorded.");
-                        $("#movie").typeahead("val", "");
-                        $("#customers").typeahead("val", "");
-                        $("#movies li").remove();
-                    })
-                    .fail(function() {
-                        toastr.error("Something happened!");
+                        $.ajax({
+                                url: "/api/rentals",
+                                method: "POST",
+                                data: vm
+                        })
+                        .done(function() {
+                            toastr.success("Rentals successfully recorded.");
+                            $("#movie").typeahead("val", "");
+                            $("#customers").typeahead("val", "");
+                            $("#movies li").remove();
+                        })
+                        .fail(function() {
+                            toastr.error("Something happened!");
+                        });
                     });
+                }
             });
+
+            
         });
     </script>
 }
