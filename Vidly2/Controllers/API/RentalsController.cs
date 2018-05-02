@@ -11,11 +11,11 @@ using AutoMapper;
 namespace Vidly2.Controllers.API
 {
     [AllowAnonymous]
-    public class RentalController : ApiController
+    public class RentalsController : ApiController
     {
         private readonly ApplicationDbContext _context;
 
-        public RentalController()
+        public RentalsController()
         {
             _context = new ApplicationDbContext();
         }
