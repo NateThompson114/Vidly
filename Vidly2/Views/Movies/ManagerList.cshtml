@@ -20,7 +20,7 @@
 <br /><br />
 
 @{
-    var tableHeaders = new List<string> { "Movie", "Genre", "Release Date", "Number in Stock", "Edit", "Delete" };
+    var tableHeaders = new List<string> { "Movie", "Genre", "Release Date", "Number in Stock", "Number in Available", "Edit", "Delete" };
 
     <table id="movieTable" class="table table-hover">
         <thead>
@@ -55,7 +55,10 @@
                         data: "dateReleased"
                     },
                     {
-                        data: "quantity"
+                        data: "numberInStock"
+                    },
+                    {
+                        data: "numberAvailable"
                     },
                     {
                         render: function (data, type, movie) {

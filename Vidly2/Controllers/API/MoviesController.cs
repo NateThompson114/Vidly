@@ -11,6 +11,7 @@ using Vidly2.Models;
 
 namespace Vidly2.Controllers.API
 {
+    [AllowAnonymous]
     public class MoviesController : ApiController
     {
         private ApplicationDbContext _context;
@@ -75,9 +76,9 @@ namespace Vidly2.Controllers.API
                 return NotFound();
 
             var movie = Mapper.Map(movieDto, movieInDb);
-            _context.SaveChanges();
-
             movie.Genre = genres.FirstOrDefault(m => m.Id == movie.GenreId);
+
+            _context.SaveChanges();
 
             return Ok(movieInDb);
         }

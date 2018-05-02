@@ -10,6 +10,7 @@ using Vidly2.Dtos;
 
 namespace Vidly2.Controllers.API
 {
+    [AllowAnonymous]
     public class CustomersController : ApiController
     {
         private ApplicationDbContext _context;
@@ -44,7 +45,7 @@ namespace Vidly2.Controllers.API
         }
 
         // POST /api/customers
-        [System.Web.Mvc.HttpPost]
+        [HttpPost]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -59,7 +60,7 @@ namespace Vidly2.Controllers.API
         }
 
         // PUT /api/customers/1
-        [System.Web.Mvc.HttpPut]
+        [HttpPut]
         public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -78,7 +79,7 @@ namespace Vidly2.Controllers.API
         }
 
         // DELETE /api/customers/1
-        [System.Web.Mvc.HttpDelete]
+        [HttpDelete]
         public IHttpActionResult DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);

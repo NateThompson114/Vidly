@@ -17,7 +17,6 @@ namespace Vidly2.Dtos
 
         public bool IsSubscribedToNewsletter { get; set; }
         
-        [IgnoreDataMember]
         public byte MembershipTypeId { get; set; }
         
         public DateTime? Birthdate { get; set; }

@@ -6,9 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using Vidly2.Dtos;
 using Vidly2.Models;
+using AutoMapper;
 
 namespace Vidly2.Controllers.API
 {
+    [AllowAnonymous]
     public class RentalController : ApiController
     {
         private readonly ApplicationDbContext _context;
@@ -19,16 +21,34 @@ namespace Vidly2.Controllers.API
         }
 
         [HttpPost]
-        public IHttpActionResult RentlMovies(RentalDto rental)
+        public IHttpActionResult RentlMovies(NewRentalDto rentalDto)
         {
-            var cust = _context.Customers.SingleOrDefault(m => m.Id == rental.CustomerId);
+            var movies = _context.Movies.Where(
+                m => rentalDto.MovieIds.Contains(m.Id)).ToList();
+            
 
-            if (cust == null)
-                return NotFound();
+            var customer = _context.Customers.SingleOrDefault(
+                c => c.Id == rentalDto.CustomerId);
 
-            if (!rental.MovieIds.Any())
-                return NotFound();
+            foreach (var movie in movies)
+            {
+                if (movie.NumberAvailable == 0)
+                    return BadRequest("Movie is not available");
 
+                movie.NumberAvailable--;
+
+                var rental = new Rental
+                {
+                    Customer = customer,
+                    Movie = movie,
+                    DateRented = DateTime.Now
+                };
+
+                _context.Rentals.Add(rental);
+            }
+
+            _context.SaveChanges();
+            
             return Ok();
         }
     }

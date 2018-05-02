@@ -261,10 +261,23 @@
     <Compile Include="Migrations\201804302029158_RentalInitialModel.Designer.cs">
       <DependentUpon>201804302029158_RentalInitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805021229017_UpdatedRentalMethod.cs" />
+    <Compile Include="Migrations\201805021229017_UpdatedRentalMethod.Designer.cs">
+      <DependentUpon>201805021229017_UpdatedRentalMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805021250380_FixRentalDTO.cs" />
+    <Compile Include="Migrations\201805021250380_FixRentalDTO.Designer.cs">
+      <DependentUpon>201805021250380_FixRentalDTO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805021452164_addMovieAvailability.cs" />
+    <Compile Include="Migrations\201805021452164_addMovieAvailability.Designer.cs">
+      <DependentUpon>201805021452164_addMovieAvailability.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\NewRental.cs" />
     <Compile Include="Models\Rental.cs" />
     <Compile Include="Tools\SHA.cs" />
     <Compile Include="ViewModel\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -668,6 +681,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804302029158_RentalInitialModel.resx">
       <DependentUpon>201804302029158_RentalInitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805021229017_UpdatedRentalMethod.resx">
+      <DependentUpon>201805021229017_UpdatedRentalMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805021250380_FixRentalDTO.resx">
+      <DependentUpon>201805021250380_FixRentalDTO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805021452164_addMovieAvailability.resx">
+      <DependentUpon>201805021452164_addMovieAvailability.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

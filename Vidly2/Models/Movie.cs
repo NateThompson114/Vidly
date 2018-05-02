@@ -20,7 +20,9 @@ namespace Vidly2.Models
         public DateTime DateAdded { get; set; }
 
         [Required, Display(Name = "Number in Stock"), Range(0,100)]
-        public int Quantity { get; set; }
+        public int NumberInStock { get; set; }
+
+        public int NumberAvailable { get; set; }
 
         public Genre Genre { get; set; }
 

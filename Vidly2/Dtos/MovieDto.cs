@@ -18,9 +18,9 @@ namespace Vidly2.Dtos
 
         public DateTime DateAdded { get; set; }
 
-        public int Quantity { get; set; }
-        
-        [IgnoreDataMember]
+        public int NumberAvailable { get; set; }
+        public int NumberInStock { get; set; }
+
         public int GenreId { get; set; }
 
         public GenreDto Genre { get; set; }
